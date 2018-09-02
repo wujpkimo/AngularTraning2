@@ -4,6 +4,7 @@ import { MainComponent } from './layout/main/main.component';
 import { AuthComponent } from './login/auth/auth.component';
 import { PostComponent } from './posts/post/post.component';
 import { EditorComponent } from './posts/editor/editor.component';
+import { PostsComponent } from './posts/posts/posts.component';
 
 const routes: Routes = [
   {
@@ -13,11 +14,12 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'posts',
+        //pathMatch用來決定網址的路由 若為full時，網址路由與設定路由
         pathMatch: 'full'
       },
       {
         path: 'posts',
-        component: PostComponent
+        component: PostsComponent
       },
       {
         path: 'post/:id',
