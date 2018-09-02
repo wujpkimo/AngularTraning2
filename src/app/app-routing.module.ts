@@ -1,43 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './layout/main/main.component';
-import { AuthComponent } from './login/auth/auth.component';
-import { PostComponent } from './posts/post/post.component';
-import { EditorComponent } from './posts/editor/editor.component';
-import { PostsComponent } from './posts/posts/posts.component';
+// import { MainComponent } from './layout/main/main.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'posts',
-        //pathMatch用來決定網址的路由 若為full時，網址路由與設定路由
-        pathMatch: 'full'
-      },
-      {
-        path: 'posts',
-        component: PostsComponent
-      },
-      {
-        path: 'post/:id',
-        component: PostComponent
-      },
-      {
-        path: 'create',
-        component: EditorComponent
-      }
-    ]
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule'
   },
   {
-    path: 'login',
-    component: AuthComponent
+    path: '',
+    // component: MainComponent,
+    loadChildren: './posts/posts.module#PostsModule'
   }
 ];
 
 @NgModule({
+  // 若要將router隱藏可使用usehash參數
+  // imports: [RouterModule.forRoot(routes, { useHash: true })],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
